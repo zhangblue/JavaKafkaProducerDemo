@@ -17,7 +17,7 @@ public class KafkaProducerFactory {
      */
     public void openProducer() {
         Properties props = new Properties();
-        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "192.168.10.12:9092");//kafka服务器地址
+        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "10.101.185.156:9092,10.101.185.152:9092");//kafka服务器地址
         props.put(ProducerConfig.ACKS_CONFIG, "all");
         props.put(ProducerConfig.RETRIES_CONFIG, 0);
         props.put(ProducerConfig.BATCH_SIZE_CONFIG, 16384);
@@ -41,7 +41,7 @@ public class KafkaProducerFactory {
         producer.send(new ProducerRecord<String, String>(topic, key, line), new Callback() {
             @Override
             public void onCompletion(RecordMetadata recordMetadata, Exception e) {
-                System.out.println("本次产生了[" + recordMetadata.offset() + "]条数据");
+                //System.out.println("本次产生了[" + recordMetadata.offset() + "]条数据");
             }
         });
     }
